@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CalcHub | All-in-One Online Calculator Platform</title>
+    <meta name="description" content="Free, fast, and accurate online calculators for math, finance, health, geometry, construction, physics, chemistry, date & time, and unit conversions." />
+    <meta name="keywords" content="online calculators, free calculator, finance calculator, mortgage calculator, bmi calculator, scientific calculator, math solver, unit converter" />
+    <meta name="author" content="CalcHub" />
+    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+    <link rel="canonical" href="https://calchub.netlify.app" />
+
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Pure Vanilla CSS Stylesheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <!-- Schema.org WebApplication Metadata -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CalcHub Online Calculators",
+      "url": "https://calchub.netlify.app",
+      "description": "Comprehensive all-in-one suite of 150+ free online calculators for finance, health, math, engineering, and everyday utility.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+  </head>
+  <body>
+    <div class="app-layout">
+      <!-- Sticky Navigation Header -->
+      <header class="site-header">
+        <div class="container header-inner">
+          <!-- Brand Logo -->
+          <a href="./index.html" class="brand-link" style="text-decoration: none;">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            </div>
+            <span>Calc<span class="text-gradient">Hub</span></span>
+            <span class="brand-tag">PRO</span>
+          </a>
+
+          <!-- Quick Search Button (Desktop) -->
+          <button id="header-search-btn" class="search-trigger-btn" aria-label="Open search dialog">
+            <span style="display: inline-flex; align-items: center; gap: 0.6rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>Search 180+ calculators...</span>
+            </span>
+            <kbd class="search-kbd">Ctrl K</kbd>
+          </button>
+
+          <!-- Header Actions -->
+          <div class="header-actions">
+            <!-- Favorites Trigger -->
+            <button id="open-favorites-btn" class="icon-btn" title="Saved Favorites" aria-label="Open favorites drawer">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span id="fav-count-badge" class="icon-badge-counter">4</span>
+            </button>
+
+            <!-- History Trigger -->
+            <button id="open-history-btn" class="icon-btn" title="Calculation History" aria-label="Open calculation history drawer">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="hist-count-badge" class="icon-badge-counter">0</span>
+            </button>
+
+            <!-- Dark / Light Theme Toggle -->
+            <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+              <span class="theme-icon">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="container hero-content">
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.25rem;">
+              <span class="badge badge-primary" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                <span>The Complete Web Calculator Suite</span>
+              </span>
+            </div>
+
+            <h1 class="hero-title">
+              All Your Calculators in <span class="text-gradient">One Place</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Free, fast, and accurate online calculators for everyday life, education, business, finance, health, and more.
+            </p>
+
+            <!-- Hero Search Input -->
+            <div class="hero-search-box">
+              <div class="hero-search-input-wrapper">
+                <span class="hero-search-icon" style="display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <input
+                  type="text"
+                  id="hero-search-input"
+                  class="hero-search-input"
+                  placeholder="Search 180+ calculators... (e.g. loan, bmi, mortgage, percentage, age, fraction)"
+                  aria-label="Search for a calculator"
+                />
+              </div>
+            </div>
+
+            <!-- Category Filter Pills (All 15 Categories) -->
+            <div id="hero-category-pills" class="hero-pills">
+              <button type="button" class="pill-btn hero-pill-btn active" data-cat-id="all">
+                <span>All Categories</span>
+                <span class="pill-count">183</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="basic-everyday">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span>
+                <span>Basic & Everyday</span>
+                <span class="pill-count">9</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="math">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/><line x1="12" y1="8" x2="12" y2="8"/></svg></span>
+                <span>Math & Algebra</span>
+                <span class="pill-count">21</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="finance">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></span>
+                <span>Finance & Money</span>
+                <span class="pill-count">26</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="health-fitness">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+                <span>Health & Fitness</span>
+                <span class="pill-count">16</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="geometry">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="12 2 19.07 15.66 4.93 15.66 12 2"/></svg></span>
+                <span>Geometry & Trig</span>
+                <span class="pill-count">15</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="unit-converters">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+                <span>Unit Converters</span>
+                <span class="pill-count">17</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="date-time">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="12 14 12 17 15 17"/></svg></span>
+                <span>Date & Time</span>
+                <span class="pill-count">13</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="construction">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 3.26-6.36 6.36"/></svg></span>
+                <span>Construction & DIY</span>
+                <span class="pill-count">12</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="electrical">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+                <span>Electrical</span>
+                <span class="pill-count">9</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="physics">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                <span>Physics</span>
+                <span class="pill-count">12</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="chemistry">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31L4.12 20.3a2 2 0 0 0 1.73 2.7h12.3a2 2 0 0 0 1.73-2.7L14 9.31V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/></svg></span>
+                <span>Chemistry</span>
+                <span class="pill-count">8</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="statistics">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+                <span>Statistics</span>
+                <span class="pill-count">10</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="computer-data">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                <span>Computer & Data</span>
+                <span class="pill-count">14</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="time-productivity">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                <span>Productivity</span>
+                <span class="pill-count">7</span>
+              </button>
+              <button type="button" class="pill-btn hero-pill-btn" data-cat-id="business-marketing">
+                <span class="pill-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <span>Business & Marketing</span>
+                <span class="pill-count">10</span>
+              </button>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Working Calculators</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">15</span>
+                <span class="stat-label">Specialized Categories</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Free & Instant</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURED INTERACTIVE CALCULATOR WORKSPACE (RIGHT ON INDEX.HTML) -->
+        <section id="quick-calc-section" class="section" style="padding-top: 0;">
+          <div class="container">
+            <!-- Section Header -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <div style="display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem;">
+                <span class="badge badge-primary" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Instant Live Output</span>
+                </span>
+              </div>
+              <h2 style="font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 0.5rem;">
+                Interactive Calculator <span class="text-gradient">Workspace</span>
+              </h2>
+              <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; margin: 0 auto;">
+                Select a tool below, enter your parameters, and click <strong>Calculate</strong> to view real-time formulas, detailed breakdowns, and solutions.
+              </p>
+            </div>
+
+            <!-- Calculator Switcher Tabs -->
+            <div role="tablist" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">
+              <button role="tab" class="btn calc-tab-btn btn-primary" data-calc-id="basic-calculator" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                <span>Basic Calculator</span>
+              </button>
+              <button role="tab" class="btn calc-tab-btn btn-secondary" data-calc-id="percentage-calculator" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                <span>Percentage</span>
+              </button>
+              <button role="tab" class="btn calc-tab-btn btn-secondary" data-calc-id="bmi-calculator" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span>BMI Fitness</span>
+              </button>
+              <button role="tab" class="btn calc-tab-btn btn-secondary" data-calc-id="age-calculator" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Age Calculator</span>
+              </button>
+              <button role="tab" class="btn calc-tab-btn btn-secondary" data-calc-id="mortgage-calculator" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Mortgage & Loans</span>
+              </button>
+              <button role="tab" class="btn calc-tab-btn btn-secondary" data-calc-id="unit-converter" style="border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                <span>Unit Converter</span>
+              </button>
+            </div>
+
+            <!-- Main Interactive Calculator Grid (Inputs & Output) -->
+            <div class="calculator-main-grid">
+              <!-- Left Column: Input Form Card -->
+              <div class="calc-card-container">
+                <div class="calc-card-title-bar">
+                  <div>
+                    <h3 id="active-calc-title" style="font-size: 1.25rem; font-weight: 700; margin: 0 0 0.25rem;">
+                      Basic Calculator
+                    </h3>
+                    <p id="active-calc-desc" style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                      Quick arithmetic calculator for addition, subtraction, multiplication, and division.
+                    </p>
+                  </div>
+
+                  <button type="button" id="btn-reset" class="btn btn-secondary" style="height: 36px; padding: 0 0.85rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+
+                <form id="calculator-form">
+                  <!-- Dynamic Fields Container -->
+                  <div id="calculator-fields-container"></div>
+
+                  <!-- Error Alert Box -->
+                  <div id="calc-error-message" class="form-error" style="display: none; margin-bottom: 1rem;"></div>
+
+                  <!-- Submit / Calculate Button Group -->
+                  <div class="form-btn-group">
+                    <button type="submit" id="btn-calculate" class="btn btn-primary" style="flex: 1; height: 48px; font-size: 1.05rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                      <span>Calculate</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Right Column: Output / Result Card -->
+              <div id="calculator-result" class="results-card">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+                  <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Calculation Results</h3>
+                  <span class="badge badge-popular" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Verified Math</span>
+                  </span>
+                </div>
+
+                <!-- Highlighted Primary Result Box -->
+                <div id="primary-result-box" class="primary-result-box">
+                  <div id="primary-result-label" class="primary-result-label">Calculated Result</div>
+                  <div id="primary-result-value" class="primary-result-value">275</div>
+                  <div id="primary-result-subtext" class="primary-result-subtext">Evaluated: 125 + 75 * 2</div>
+                </div>
+
+                <!-- Detailed Breakdown List -->
+                <div id="result-breakdown" class="result-breakdown-list">
+                  <div class="result-row">
+                    <span class="result-row-label">Expression</span>
+                    <span class="result-row-value">125 + 75 * 2</span>
+                  </div>
+                  <div class="result-row">
+                    <span class="result-row-label">Computed Value</span>
+                    <span class="result-row-value">275</span>
+                  </div>
+                </div>
+
+                <!-- Step-by-Step Calculation Flow -->
+                <div id="result-steps" class="steps-box">
+                  <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 0.4rem; color: var(--text-primary);">
+                    Calculation Steps
+                  </div>
+                  <div class="step-item" style="font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <span class="step-number" style="font-weight: 700; color: var(--accent-primary); margin-right: 0.35rem;">1.</span>
+                    <span>Parsed expression: 125 + 75 * 2</span>
+                  </div>
+                  <div class="step-item" style="font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <span class="step-number" style="font-weight: 700; color: var(--accent-primary); margin-right: 0.35rem;">2.</span>
+                    <span>Applied PEMDAS: 75 × 2 = 150</span>
+                  </div>
+                  <div class="step-item" style="font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <span class="step-number" style="font-weight: 700; color: var(--accent-primary); margin-right: 0.35rem;">3.</span>
+                    <span>125 + 150 = 275</span>
+                  </div>
+                </div>
+
+                <!-- Action Button: Copy Result -->
+                <div class="result-actions-row" style="margin-top: auto; padding-top: 1.25rem;">
+                  <button type="button" id="btn-copy-result" class="btn btn-secondary" style="flex: 1; height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <svg class="copy-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span id="copy-result-text">Copy Result</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Popular Calculators Grid Showcase -->
+        <section class="section" style="background: var(--bg-surface-subtle);">
+          <div class="container">
+            <div class="section-header">
+              <div>
+                <span class="badge badge-popular" style="display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.5rem;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Trending Tools</span>
+                </span>
+                <h2 class="section-title">Popular Online Calculators</h2>
+                <p class="section-subtitle">The most frequently utilized calculations for finance, health, algebra, and conversions.</p>
+              </div>
+            </div>
+
+            <div id="popular-cards-grid" class="calculator-grid"></div>
+          </div>
+        </section>
+
+        <!-- All 15 Categories Grid -->
+        <section class="section">
+          <div class="container">
+            <div class="section-header">
+              <div>
+                <span class="badge badge-primary" style="display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.5rem;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  <span>Complete Directory</span>
+                </span>
+                <h2 class="section-title">Explore by Category</h2>
+                <p class="section-subtitle">Over 15 categories covering finance, mathematics, engineering, health, and science.</p>
+              </div>
+            </div>
+
+            <div id="categories-grid" class="category-grid"></div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-top-grid">
+            <!-- Brand Info -->
+            <div>
+              <div class="brand-link" style="margin-bottom: 1rem;">
+                <div class="brand-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                </div>
+                <span>Calc<span class="text-gradient">Hub</span></span>
+                <span class="brand-tag">PRO</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; max-width: 320px; margin-bottom: 1.25rem;">
+                CalcHub is a free, fast, and comprehensive web platform featuring over 180+ accurate calculators for finance, health, math, construction, and daily productivity.
+              </p>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-primary">100% Free</span>
+                <span class="badge badge-featured">180+ Tools</span>
+                <span class="badge badge-popular">Zero Ads</span>
+              </div>
+            </div>
+
+            <!-- Col 1: Everyday & Math -->
+            <div>
+              <h4 class="footer-col-title">Mathematics</h4>
+              <ul class="footer-links">
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('basic-calculator')">Basic Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('percentage-calculator')">Percentage Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('basic-calculator')">Fraction Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('basic-calculator')">Scientific Calculator</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 2: Finance -->
+            <div>
+              <h4 class="footer-col-title">Finance & Money</h4>
+              <ul class="footer-links">
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('mortgage-calculator')">Mortgage Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('mortgage-calculator')">Auto Loan Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('mortgage-calculator')">Compound Interest</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('mortgage-calculator')">Investment ROI</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Health -->
+            <div>
+              <h4 class="footer-col-title">Health & Fitness</h4>
+              <ul class="footer-links">
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('bmi-calculator')">BMI Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('age-calculator')">Age Calculator</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('bmi-calculator')">BMR & Calorie Deficit</a></li>
+                <li><a href="#quick-calc-section" class="footer-link" onclick="renderActiveCalculator('bmi-calculator')">Body Fat Percentage</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 4: Platform -->
+            <div>
+              <h4 class="footer-col-title">Platform & Tools</h4>
+              <ul class="footer-links">
+                <li><a href="#quick-calc-section" class="footer-link">Live Instant Workspace</a></li>
+                <li><a href="javascript:void(0)" class="footer-link" onclick="document.getElementById('open-favorites-btn').click()">Saved Favorites</a></li>
+                <li><a href="javascript:void(0)" class="footer-link" onclick="document.getElementById('open-history-btn').click()">Calculation History</a></li>
+                <li><a href="./public/sitemap.xml" target="_blank" class="footer-link">XML Sitemap Index</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Footer Bottom -->
+          <div class="footer-bottom">
+            <div>© 2026 CalcHub Platform. Free, fast & accurate online calculations.</div>
+            <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center;">
+              <span style="color: var(--text-muted);">Privacy Policy</span>
+              <span style="color: var(--text-muted);">•</span>
+              <span style="color: var(--text-muted);">Terms of Service</span>
+              <span style="color: var(--text-muted);">•</span>
+              <span style="color: var(--text-muted);">Medical Disclaimer</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Favorites Slide-Over Drawer -->
+      <div id="favorites-drawer" class="drawer">
+        <div class="drawer-header">
+          <h3 class="drawer-title" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Saved Favorites</span>
+          </h3>
+          <button id="close-favorites-btn" class="drawer-close" aria-label="Close favorites drawer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div id="favorites-list-container" class="drawer-content"></div>
+      </div>
+
+      <!-- History Slide-Over Drawer -->
+      <div id="history-drawer" class="drawer">
+        <div class="drawer-header">
+          <h3 class="drawer-title" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Calculation History</span>
+          </h3>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <button id="clear-history-btn" class="btn btn-secondary" style="height: 30px; font-size: 0.75rem; padding: 0 0.6rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Clear</span>
+            </button>
+            <button id="close-history-btn" class="drawer-close" aria-label="Close history drawer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="history-list-container" class="drawer-content"></div>
+      </div>
+
+      <!-- Search Modal (Ctrl + K) -->
+      <div id="search-modal" class="modal-overlay">
+        <div class="search-modal-content">
+          <!-- Modal Search Header -->
+          <div class="modal-search-header">
+            <div class="modal-search-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <input
+              type="text"
+              id="modal-search-input"
+              class="modal-search-input"
+              placeholder="Search 180+ calculators by name, category, formula or keywords..."
+              aria-label="Search all calculators"
+              autocomplete="off"
+            />
+            <button id="modal-clear-search-btn" class="modal-clear-btn" title="Clear input" aria-label="Clear search" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <kbd class="modal-kbd-badge">ESC</kbd>
+            <button id="close-search-btn" class="drawer-close" aria-label="Close search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <!-- Category Quick Filter Bar -->
+          <div id="modal-category-filters" class="modal-category-filters"></div>
+
+          <!-- Status / Count Bar -->
+          <div class="modal-status-bar">
+            <span id="modal-search-count">Showing all 183 calculators</span>
+            <span>Click any tool to open instantly</span>
+          </div>
+
+          <!-- Results Container -->
+          <div id="search-results-list" class="modal-results-body"></div>
+
+          <!-- Footer Shortcuts -->
+          <div class="modal-shortcuts-footer">
+            <div class="modal-shortcut-item">
+              <kbd>↑</kbd> <kbd>↓</kbd>
+              <span>Navigate</span>
+            </div>
+            <div class="modal-shortcut-item">
+              <kbd>↵</kbd>
+              <span>Select & Open</span>
+            </div>
+            <div class="modal-shortcut-item">
+              <kbd>ESC</kbd>
+              <span>Close</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Feedback Alerts -->
+      <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- All Calculators Registry (183 Tools) -->
+    <script src="./js/calculators-data.js"></script>
+    <!-- Pure Vanilla JavaScript Engine -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>
